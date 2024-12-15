@@ -1,17 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-import { StyleSheet, Text, View } from 'react-native';
-import Header from './components/Header';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { createStaticNavigation } from '@react-navigation/native';
+import { Dimensions, ScrollView, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
 import { Navigation } from './navigator/navigator';
+import Footer from './components/Footer';
+
 
 export default function App() {
+  const { width, height } = useWindowDimensions();
+  
   return (
-    <SafeAreaProvider>
-        
+  
+    <SafeAreaProvider
+    >
       <Navigation />
-   
     </SafeAreaProvider>
   );
 }

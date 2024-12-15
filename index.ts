@@ -6,5 +6,7 @@ import App from './App';
 // the environment is set up appropriately
 import 'react-native-url-polyfill/auto';
 import 'react-native-get-random-values';
+import 'react-native-url-polyfill/auto';
+import 'react-native-gesture-handler';
 
 registerRootComponent(App);

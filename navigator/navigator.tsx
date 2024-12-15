@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { View, Text } from 'react-native';
+import { useEffect,useState } from 'react';
+import { View, Text, Dimensions, useWindowDimensions } from 'react-native';
 import { createStaticNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from '../views/HomeScreen';
@@ -8,21 +9,46 @@ import FilmScreen from '../views/FilmScreen';
 import FilmAddScreen from '../views/FilmAdd';
 import FilmEditScreen from '../views/EditFilm';
 import Header from '../components/Header';
-import isMobile from '../services/screen';
+import CategoryAddScreen from '../views/CategoryAdd';
+
+
+  
+
 const RootStack = createNativeStackNavigator({
+
     screens: {
       Home:{
         screen:HomeScreen,
         options: {
             title: 'Главная',
-            header: ({ navigation, route }) => {
-              return isMobile ? <Text>Welcome back!</Text> : <Header></Header>;
+            header: () => {
+              return <Header></Header>
             }
           },
       } ,
       Tape:TapeScreen,
       Film:FilmScreen,
-      FilmAdd:FilmAddScreen, 
+      FilmAdd:{
+        screen : FilmAddScreen,
+        options:{
+          title: 'Добавить фильм',
+          header: () => {
+            return <Header></Header>
+          }
+        }
+        
+        
+      },
+      CategoryAdd: {
+        screen : CategoryAddScreen,
+        options:{
+          title: 'Добавить или изменить категорию',
+          header: () => {
+            return <Header></Header>
+          }
+        }
+      },
+   
       Edit: FilmEditScreen
     },
   });
