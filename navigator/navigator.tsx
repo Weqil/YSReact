@@ -7,6 +7,7 @@ import HomeScreen from '../views/HomeScreen';
 import TapeScreen from '../views/TapeScreen';
 import FilmScreen from '../views/FilmScreen';
 import FilmAddScreen from '../views/FilmAdd';
+import FilmInQuryScreen from '../views/FilmInQuery'
 import FilmEditScreen from '../views/EditFilm';
 import Header from '../components/Header';
 import CategoryAddScreen from '../views/CategoryAdd';
@@ -27,7 +28,15 @@ const RootStack = createNativeStackNavigator({
           },
       } ,
       Tape:TapeScreen,
-      Film:FilmScreen,
+      Film:{
+        screen: FilmScreen,
+        options:{
+          title: 'Просмотр фильма',
+          header: () => {
+            return <Header></Header>
+          }
+        }
+      },
       FilmAdd:{
         screen : FilmAddScreen,
         options:{
@@ -38,6 +47,15 @@ const RootStack = createNativeStackNavigator({
         }
         
         
+      },
+      FilmInQuery:{
+        screen: FilmInQuryScreen,
+        options:{
+          title: 'Поиск по параметрам',
+          header: () => {
+            return <Header></Header>
+          }
+        }
       },
       CategoryAdd: {
         screen : CategoryAddScreen,

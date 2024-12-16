@@ -7,11 +7,11 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="b0574d14-107c-41e5-b789-8bdabc356a2a"
+    Name="e939c3fa-4c54-4b1e-ac10-0d0c02646c4d"
     Publisher="CN=Weqil"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="b0574d14-107c-41e5-b789-8bdabc356a2a" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="e939c3fa-4c54-4b1e-ac10-0d0c02646c4d" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>ysweet</DisplayName>

@@ -9,8 +9,18 @@ class FilmService{
         })
     }
 
-    getAllFilms(){
-        return axios.get(`${env.API_URL}/films`)
+    getAllFilms(query?:any){
+        return axios.get(`${env.API_URL}/films`,{
+            params:{...query}
+        })
+    }
+
+    delete(id: any){
+        return axios.delete(`${env.API_URL}/films`,{
+            params:{
+                id: id,
+            }
+        })
     }
 }
 
