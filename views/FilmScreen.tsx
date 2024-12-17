@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { View, Text, ScrollView, ImageBackground, TouchableOpacity } from 'react-native';
-import { createStaticNavigation, ParamListBase, useNavigation, useRoute } from '@react-navigation/native';
+import { createStaticNavigation, ParamListBase, useFocusEffect, useNavigation, useRoute } from '@react-navigation/native';
 import { createNativeStackNavigator, NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { useEffect } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import Video from 'react-native-video';
 import { StyleSheet } from 'react-native';
 import { Image } from 'react-native';
@@ -66,11 +66,21 @@ export default function FilmScreen() {
 
   });
 
+  const webViewRef = useRef<any>(null);
+  useFocusEffect(
+    useCallback(() => {
+      setVisibleFrame(true)
+      return () => {
+        setVisibleFrame(false)
+      };
+    }, [])
+  );
   const route = useRoute();
   const  film : any = route.params || {};
   const filmLink: string = ` <iframe width="1077" height="606" src="https://www.youtube.com/embed/RumyZ-X8V5U" title="Тир Лист 25 Худших Героев [Dota 2]" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>";`
   const navigation = useNavigation<NativeStackNavigationProp<ParamListBase>>();
   const [srcInVideo,setSrcInVideo] = React.useState('')
+  const [visibleFrame,setVisibleFrame] = React.useState(false)
   const image = {uri: film.prewiev};
   useEffect(() => {
     console.log(film);
@@ -113,7 +123,9 @@ export default function FilmScreen() {
               </View>
             
           </View>
-          <iframe src={srcInVideo} style={styles.video} allow="clipboard-write; autoplay" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+          ({
+            visibleFrame ?  <iframe src={srcInVideo} style={styles.video} allow="clipboard-write; autoplay" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe> : null
+          })
         </View>
       </ScrollView>
     );
