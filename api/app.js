@@ -7,8 +7,13 @@ const bodyParser = require('body-parser')
 const filmRouter = require('./routers/filmRoute')
 const categoryRouter = require('./routers/categoryRoute')
 app.use(bodyParser.json())
+const corsOptions = {
+    origin: '*', // Разрешить доступ с любого источника
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  };
   
-app.use(cors());
+app.use(cors(corsOptions));
 app.use('/films',filmRouter)
 app.use('/category',categoryRouter)
 app.use(bodyParser());
