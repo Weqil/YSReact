@@ -213,8 +213,7 @@ export default function FilmAddScreen() {
           placeholder='Введите описание фильма'
           style = {styles.description}
         ></TextInput>
-        <TextInput value = {filmYear}  onChangeText={(Text)=>{
-          setYear(Text.replace(/[^0-9]/g, ''),)
+        <TextInput value = {filmYear}  onChangeText={(Text)=>{ setYear(Text.replace(/[^0-9]/g, ''),)
         }} placeholder='Введите год создания фильма' style = {styles.input}></TextInput>
         <TextInput onChangeText = {setCountry} placeholder='Введите страну фильма' style = {styles.input}></TextInput>
         <TextInput onChangeText = {setLink} placeholder='Введите ссылку на видео' style = {styles.input}></TextInput>
